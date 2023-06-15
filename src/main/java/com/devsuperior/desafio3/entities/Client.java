@@ -34,13 +34,6 @@ public class Client {
         this.children = children;
     }
 
-    public Client(ClientDTO dto) {
-        name = dto.getName();
-        cpf = dto.getCpf();
-        income = dto.getIncome();
-        birthDate = dto.getBirthDate();
-        children = dto.getChildren();
-    }
 
     public Long getId() {
         return id;

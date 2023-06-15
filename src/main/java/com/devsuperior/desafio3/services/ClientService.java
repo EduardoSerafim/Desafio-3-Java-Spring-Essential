@@ -30,9 +30,28 @@ public class ClientService {
 
     @Transactional
     public ClientDTO Insert(ClientDTO dto){
-        Client client = new Client(dto);
+        Client client = new Client();
+        copyDtoToEntity(dto, client);
         client = clientRepository.save(client);
         return new ClientDTO(client);
+    }
+
+    @Transactional
+    public ClientDTO update(Long id, ClientDTO dto){
+        var entity = clientRepository.getReferenceById(id);
+        copyDtoToEntity(dto, entity);
+        entity = clientRepository.save(entity);
+        return new ClientDTO(entity);
+    }
+
+
+
+    private void copyDtoToEntity(ClientDTO dto, Client entity) {
+        entity.setName(dto.getName());
+        entity.setChildren(dto.getChildren());
+        entity.setCpf(dto.getCpf());
+        entity.setIncome(dto.getIncome());
+        entity.setBirthDate(dto.getBirthDate());
     }
 
 
