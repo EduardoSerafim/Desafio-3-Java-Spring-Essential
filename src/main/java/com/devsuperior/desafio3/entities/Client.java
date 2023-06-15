@@ -1,5 +1,6 @@
 package com.devsuperior.desafio3.entities;
 
+import com.devsuperior.desafio3.dto.ClientDTO;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -31,6 +32,14 @@ public class Client {
         this.income = income;
         this.birthDate = birthDate;
         this.children = children;
+    }
+
+    public Client(ClientDTO dto) {
+        name = dto.getName();
+        cpf = dto.getCpf();
+        income = dto.getIncome();
+        birthDate = dto.getBirthDate();
+        children = dto.getChildren();
     }
 
     public Long getId() {
