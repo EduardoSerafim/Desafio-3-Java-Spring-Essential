@@ -1,17 +1,25 @@
 package com.devsuperior.desafio3.dto;
 
 import com.devsuperior.desafio3.entities.Client;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
 
 import java.time.LocalDate;
 
 public class ClientDTO {
 
     private Long id;
+
+    @NotBlank(message = "Campo obrigatório")
     private String name;
+
     private String cpf;
     private Double income;
-    private LocalDate birthDate;
     private Integer children;
+
+    @PastOrPresent(message = "Não pode ser uma data futura")
+    private LocalDate birthDate;
+
 
     public ClientDTO(Long id, String name, String cpf, Double income, LocalDate birthDate, Integer children) {
         this.id = id;
