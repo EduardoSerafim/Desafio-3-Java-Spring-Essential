@@ -22,4 +22,10 @@ public class ClientService {
         return clientRepository.findAll(pageable).map(ClientDTO::new);
     }
 
+    @Transactional(readOnly = true)
+    public ClientDTO findById(Long id){
+        var entity = clientRepository.findById(id).get();
+        return new ClientDTO(entity);
+    }
+
 }
